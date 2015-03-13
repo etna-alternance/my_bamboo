@@ -1,0 +1,21 @@
+{
+    "name": "stem/my_bamboo",
+    "authors": [
+        {
+            "name": "Stephane CRIVISIER",
+            "email": "stephane@crivisier.fr"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "5.x",
+        "docopt/docopt": "1.0.0-rc1",
+        "twig/twig": "1.x"
+    },
+    "autoload": {
+        "files": [
+            "lib/filterWebApps.php",
+            "lib/generateNginxConfiguration.php",
+            "lib/remapApps.php"
+        ]
+    }
+}

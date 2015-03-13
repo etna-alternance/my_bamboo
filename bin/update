@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+$doc = <<<DOC
+Usage:
+  update --marathon=MARATHON [--nginx-conf-file=NGINX_CONF_FILE]
+  update (-h | --help)
+
+Options:
+  -h --help                            Show this screen
+  --marathon=<MARATHON>                Marathon URL
+  --nginx-conf-file=<NGINX_CONF_FILE>  Nginx configuration file [default: /etc/nginx/site-enabled/marathon.conf]
+
+DOC;
+
+chdir(realpath(__DIR__ . "/../"));
+
+require_once "./vendor/autoload.php";
+
+$args = Docopt::handle($doc);
+
+$client = new GuzzleHttp\Client([
+    "base_url" => "http://{$args["--marathon"]}/v2/tasks",
+]);
+
+$apps = filterWebApps($client->get()->json()["tasks"]);
+$apps = remapApps($apps);
+file_put_contents($args["--nginx-conf-file"], generateNginxConfiguration($apps));
