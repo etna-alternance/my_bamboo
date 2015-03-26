@@ -8,7 +8,7 @@ Usage:
 Options:
   -h --help                            Show this screen
   --marathon=<MARATHON>                Marathon URL
-  --nginx-conf-file=<NGINX_CONF_FILE>  Nginx configuration file [default: /etc/nginx/site-enabled/marathon.conf]
+  --nginx-conf-file=<NGINX_CONF_FILE>  Nginx configuration file [default: /etc/nginx/sites-enabled/marathon.conf]
 
 DOC;
 
