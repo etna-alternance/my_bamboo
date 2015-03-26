@@ -30,3 +30,4 @@ $client = new GuzzleHttp\Client([
 $apps = filterWebApps($client->get()->json()["tasks"]);
 $apps = remapApps($apps);
 file_put_contents($args["--nginx-conf-file"], generateNginxConfiguration($apps));
+exec("/etc/init.d/nginx reload");
