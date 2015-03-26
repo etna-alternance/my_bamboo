@@ -20,6 +20,11 @@ $args = Docopt::handle($doc);
 
 $client = new GuzzleHttp\Client([
     "base_url" => "http://{$args["--marathon"]}/v2/tasks",
+    "defaults" => [
+        "headers" => [
+            "Accept" => "application/json"
+        ]
+    ]
 ]);
 
 $apps = filterWebApps($client->get()->json()["tasks"]);
