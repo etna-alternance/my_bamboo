@@ -9,8 +9,8 @@ function filterWebApps($tasks)
                 $path = array_values(array_filter(preg_split("#/#", $task["appId"])));
 
                 switch (true) {
-                    case !isset($path[2]):
-                    case $path[2] != "web":
+                    case !isset($path[1]):
+                    case $path[1] != "web":
                         return false;
 
                     default:
